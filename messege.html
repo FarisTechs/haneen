@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message for Haneen</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom glow for the body background */
+        body {
+            background-color: #000; /* Dark background */
+            animation: body-glow 5s infinite alternate; /* Subtle pulsing glow */
+        }
+
+        @keyframes body-glow {
+            0% { box-shadow: inset 0 0 20px rgba(246, 114, 176, 0.5); } /* Pink glow */
+            100% { box-shadow: inset 0 0 50px rgba(238, 82, 134, 0.8); } /* Deeper pink glow */
+        }
+
+        /* Custom glow for the message text */
+        .text-glow {
+            text-shadow: 
+                0 0 5px #f672b0, /* Smaller, tighter glow */
+                0 0 15px #f672b0, /* Medium glow */
+                0 0 30px #f672b0, /* Larger, softer glow */
+                0 0 45px #ee5286, /* Even larger glow with a slightly darker pink */
+                0 0 60px #ee5286; /* Widest, softest glow */
+        }
+
+        /* Ensure font is Inter for consistency, and set Arabic direction */
+        body {
+            font-family: 'Inter', sans-serif;
+            direction: rtl; /* Right-to-left for Arabic text */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 bg-black">
+    <div class="max-w-3xl mx-auto bg-gray-900 bg-opacity-70 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white text-glow">
+        <p class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">أعزائي حنين، السلام عليكم!</p>
+        <p class="text-xl md:text-2xl lg:text-3xl mb-4">على الرغم من أن صداقتنا لا تزال جديدة، إلا أنني أشعر بالامتنان الشديد لوجودك في حياتي. لقد كان من الرائع حقًا التعرف عليك، وأنا متحمس بصدق لذلك أيضًا، بفضل الله.</p>
+        <p class="text-xl md:text-2xl lg:text-3xl mb-4">لقد استمتعت حقًا بمحادثاتنا وخاصةً قائمة التشغيل التي أنشأتها لي، إنها مجموعة من الأغاني الرائعة. لديكِ طريقة رائعة في التعامل، وأنا أقدر لطفك ومنظورك الجديد الذي تجلبينه. بارك الله في صداقتنا المتنامية.</p>
+        <p class="text-xl md:text-2xl lg:text-3xl mb-6">شكرًا لكِ لكونكِ صديقة جديدة رائعة. أتطلع إلى المزيد من الأوقات الممتعة وخلق الكثير من الذكريات الجميلة معًا، إن شاء الله.</p>
+        <p class="text-2xl md:text-3xl lg:text-4xl font-semibold">مع خالص التقدير والدعوات،<br>محمد فارس</p>
+    </div>
+
+    <!-- Audio tag for background music -->
+    <!-- Make sure videoplayback.mp3 is in the same directory as this HTML file, or provide the correct path -->
+    <audio id="background-music" src="videoplayback.mp3" loop preload="auto"></audio>
+
+    <script>
+        window.onload = () => {
+            const backgroundMusic = document.getElementById('background-music');
+            backgroundMusic.play().then(() => {
+                console.log("Music started playing on message page.");
+            }).catch(error => {
+                console.error("Error playing music on message page:", error);
+                // Display a message if music playback fails
+                const messageBox = document.createElement('div');
+                messageBox.textContent = 'تعذر تشغيل الموسيقى تلقائيًا. يرجى النقر على الشاشة لتشغيلها.'; // Arabic for: Could not play music automatically. Please click on the screen to play it.
+                messageBox.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    padding: 10px;
+                    background-color: #ff4d4d;
+                    color: white;
+                    border-radius: 5px;
+                    z-index: 1001;
+                    font-family: 'Inter', sans-serif;
+                    direction: rtl;
+                    font-size: 2vmin;
+                `;
+                document.body.appendChild(messageBox);
+                setTimeout(() => messageBox.remove(), 5000); // Remove message after 5 seconds
+            });
+        };
+    </script>
+</body>
+</html>
